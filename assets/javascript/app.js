@@ -28,13 +28,11 @@ var testUrl= "http://api.flickr.com/services/feeds/photos_public.gne?tags=kitten
 
 // Ajax Call to Instagram API
 //********************************************************************
-$.ajax({
-	url:testUrl,
-	method:"GET"
-}).done(function(response){
-	var response = response.data;
-	console.log(response);
-})
+$.get(testUrl, function (data){
+	console.log(data);
+	console.log($.type(data));
+	console.log(JSON.parse(data));
+});
 
 
 
