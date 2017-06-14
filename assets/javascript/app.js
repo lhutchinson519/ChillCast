@@ -20,19 +20,17 @@ var database = firebase.database();
 var instagramQueryUrl = "";
 var weatherQueryUrl = "";
 var APIKEY = "a219531e0ef0e795fcea4e7cc6b2e402";
-var flickrApi = "http://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" +  APIKEY  + "$gallery_id=66911286-72157647277042064&format=json&jsoncallback=?";
 var searchLocation = "";
+var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=";
+var weatherApiKey = "&APPID=166a433c57516f51dfab1f7edaed8413";
 
-var testUrl= "http://api.flickr.com/services/feeds/photos_public.gne?tags=kitten&format=json&api_key=" + APIKEY;
 
 
-// Ajax Call to Instagram API
-//********************************************************************
-$.get(testUrl, function (data){
-	console.log(data);
-	console.log($.type(data));
-	console.log(JSON.parse(data));
-});
+
+
+
+
+
 
 
 
@@ -50,8 +48,50 @@ $("#submitButton").on("click",function(){
 	searchLocation = $("#initialInput").val().trim();
 
 	console.log(searchLocation);
+	queryUrl = queryUrl + searchLocation + weatherApiKey;
+
+
+	// GET Call to Flickr **********************************************
+	$.get({
+  		url: 'https://api.flickr.com/services/feeds/photos_public.gne',
+  		dataType: 'jsonp',
+  		data: { "tags": searchLocation, "format": "json" }
+	});
+
+
+
+
+			
+    // Get OpenweatherAPI ajax call *************************************
+    $.ajax({
+      url: queryUrl,
+      method: "GET"
+    }).done(function(response){
+      console.log(response);
+
+     
+    });
+
+
+		
 
 });
+
+
+
+
+
+
+
+
+
+function jsonFlickrFeed(json) {
+		  console.log(json);
+
+		  $.each(json.items, function(i, item) {
+		    $("<img />").attr("src", item.media.m).appendTo("#images");
+		  });
+		}; 
 
 
 
