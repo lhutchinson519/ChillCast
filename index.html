@@ -16,19 +16,43 @@
 
 <!--Code Goes Here -->
 <!-- Create 4 sections(User Input, Weather Display, Instagram Display, and last location searched) -->
-<div class ="container">
+<div class ="container" id = "firstScreenDisplayed">
   
-  <div class = "row">
+  <div class = "row col-md-offset-2">
 
-    <div class = "col-md-6 col-md-offset-4" style = "margin-top: 20%">
+    <div class = "col-md-2 col-md-offset-2" style = "margin-top: 20%">
 
     <h1 style = "color:white; font-size: 120px">ChillCast</h1>
 
-    <input class = "input inputb"  id = "initialInput" placeholder = "Where are you going?" style = "width:440px">
+    <input class = "input inputb"  id = "initialInput" placeholder = "Where are you searching?" style = "width:440px">
 
     <button class = "btn btn-success" style= "display:block; margin-top:15px; margin-left:170px" id = "submitButton">Cast Away!</button>
 
     </div>
+  </div>
+
+</div>
+
+
+<div class = "container" id = "secondScreenDisplayed" style = "display:none;">
+
+
+  <div class = "row">
+
+
+
+    <div class = "col-md-6" id = "displayedImages">
+    
+    <h1 style = "text-align:center; color:white; border-bottom: solid white 2px"> Related Images </h1>
+    </div>
+
+    <div class = "col-md-6" id = "displayedWeather">
+    <h1 style = "text-align:center; color:white; border-bottom: solid white 2px"> Weather of Location</h1>
+
+    </div>
+
+
+
   </div>
 
 </div>
