@@ -2,77 +2,50 @@
 <html lang="en-us">
 
 <head>
-
-<meta charset="UTF-8">
-<title>ChillCast</title>
-
-<!-- Bootswatch Theme -->
-
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/solar/bootstrap.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <title>ChillCast</title>
+    <!-- Bootswatch Theme -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/solar/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-
-<!--Code Goes Here -->
-<!-- Create 4 sections(User Input, Weather Display, Instagram Display, and last location searched) -->
-<div class ="container" id = "firstScreenDisplayed">
-  
-  <div class = "row col-md-offset-2">
-
-    <div class = "col-md-2 col-md-offset-2" style = "margin-top: 20%">
-
-    <h1 style = "color:white; font-size: 120px">ChillCast</h1>
-
-    <input class = "input inputb"  id = "initialInput" placeholder = "Where are you searching?" style = "width:440px">
-
-    <button class = "btn btn-success" style= "display:block; margin-top:15px; margin-left:170px" id = "submitButton">Cast Away!</button>
-
+    <!--Code Goes Here -->
+    <!-- Create 4 sections(User Input, Weather Display, Instagram Display, and last location searched) -->
+    <div class="container" id="firstScreenDisplayed">
+        <div class="row col-md-offset-2">
+            <div class="col-md-2 col-md-offset-2" style="margin-top: 20%">
+                <h1 style="color:white; font-size: 120px">ChillCast</h1>
+                <input class="input inputb" id="initialInput" placeholder="Where are you searching?" style="width:440px">
+                <button class="btn btn-success" style="display:block; margin-top:15px; margin-left:170px" id="submitButton">Cast Away!</button>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="container" id="secondScreenDisplayed" style="display:none;">
+        <div class="row">
+            <div class="col-md-6" id="displayedImages">
+                <h1 style="text-align:center; color:white; border-bottom: solid white 2px"> Related Images </h1>
+            </div>
 
-</div>
+            <h1 style="text-align:center; color:white; border-bottom: solid white 2px"> Weather of Location</h1>
+            <div class="col-md-6" id="displayedWeather">
+            </div>
+          
+          <form>
+            <div class="form-group" id="inputEmail">
+            <p>For an email of your results, input email below: </p>
+              <label for="emailInput">Email: </label>
+              <input id="emailInput" name="email" type="email" class="form-control" placeholder="Email" style="width: 300px;">
+              <button id="emailSubmit" class="btn btn-default">Submit</button>
+            </div>
 
-
-<div class = "container" id = "secondScreenDisplayed" style = "display:none;">
-
-
-  <div class = "row">
-
-
-
-    <div class = "col-md-6" id = "displayedImages">
-    
-    <h1 style = "text-align:center; color:white; border-bottom: solid white 2px"> Related Images </h1>
+        </div>
     </div>
-
-    <div class = "col-md-6" id = "displayedWeather">
-    <h1 style = "text-align:center; color:white; border-bottom: solid white 2px"> Weather of Location</h1>
-
-    </div>
-
-
-
-  </div>
-
-</div>
-
-
-
-  
-
-
-
-
-
-
-<!-- JS Links Jquery Firebase MomentJs app.js -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-<script src = "assets/javascript/app.js"></script>
-
-
+    <!-- JS Links Jquery Firebase MomentJs app.js -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
