@@ -25,7 +25,16 @@ var APIKEY = "a219531e0ef0e795fcea4e7cc6b2e402";
 var searchLocation = "";
 var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=";
 var weatherApiKey = "&APPID=166a433c57516f51dfab1f7edaed8413";
+
+
 var emailInfo = "";
+
+var weatherForecastTime = "";
+var weatherDescription = "";
+var weatherHumidity = "";
+var weatherTemperature = "";
+var weatherWindSpeed = "";
+var weatherIcon = "";
 
 
 
@@ -39,7 +48,13 @@ $("#emailSubmit").on("click", function(){
   emailInfo = $("#emailInput").val().trim();
 
   database.ref().set({
-    email: emailInfo
+    email: emailInfo,
+    weatherForecastTime: weatherForecastTime,
+    weatherDescription: weatherDescription,
+    weatherHumidity: weatherHumidity,
+    weatherTemperature: weatherTemperature,
+    weatherWindSpeed: weatherWindSpeed,
+    weatherIcon: weatherIcon
   })
 
 });
@@ -66,33 +81,37 @@ $("#submitButton").on("click", function() {
     }).done(function(response) {
         console.log(response);
 
-        minTemp = ((response.list[0].main.temp_min - 273.15) * 9 / 5) + 32;
-        maxTemp = ((response.list[0].main.temp_max - 273.15) * 9 / 5) + 32;
+        minTemp = ((response.list[12].main.temp_min - 273.15) * 9 / 5) + 32;
+        
 
 
         //replace Degrees Farenheit with icon later?
         minTemp = "Min Temperature: " + Math.floor(minTemp) + " Degrees Farenheit";
-        maxTemp = "Max Temperature: " + Math.floor(maxTemp) + " Degrees Farenheit";
+       
 
         weatherIcon = response.list[0].weather[0].icon;
 
 
-        $("#displayedWeather").append("<p> Time: " + response.list[0].dt_txt + "</p>")
+        $("#displayedWeather").append("<p> Time: " + response.list[12].dt_txt + "</p>")
 
-        .append("<p> Decription: " + response.list[0].weather[0].description + "</p>")
+        .append("<p> Decription: " + response.list[12].weather[0].description + "</p>")
 
-        .append("<p>" + "Humidity: " + response.list[0].main.humidity + " % </p>")
+        .append("<p>" + "Humidity: " + response.list[12].main.humidity + " % </p>")
 
         .append("<p>" + minTemp + "</p>")
 
-        .append("<p>" + maxTemp + "</p>")
-
-        .append("<p> Wind Speed " + response.list[0].wind.speed + "MPH </p>")
+        .append("<p> Wind Speed " + response.list[12].wind.speed + "MPH </p>")
 
         .append("<img src = 'http://openweathermap.org/img/w/" + weatherIcon + ".png' style = 'width:100px'>")
 
-        //    testing       
-        weatherIcon = response.list[0].weather[0].icon;
+        //    testing   
+        weatherForecastTime =  response.list[12].dt_txt;
+        weatherDescription = response.list[12].weather[0].description;
+        weatherHumidity = response.list[12].main.humidity;
+        weatherTemperature = minTemp;
+        weatherWindSpeed = response.list[12].wind.speed;
+        weatherIcon = 'http://openweathermap.org/img/w/' + weatherIcon + '.png';
+
         console.log(weatherIcon);
 
 

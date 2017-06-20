@@ -11,13 +11,30 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+
 var emailToSend= "";
+var weatherForecastTime = "";
+var weatherDescription = "";
+var weatherHumidity = "";
+var weatherTemperature = "";
+var weatherWindSpeed = "";
+var weatherIcon = "";
 
 
 
 database.ref().on("value", function(snapshot){
 	emailToSend = snapshot.val().email;
+    weatherForecastTime = snapshot.val().weatherForecastTime;
+    weatherDescription = snapshot.val().weatherDescription;
+    weatherHumidity = snapshot.val().weatherHumidity;
+    weatherTemperature = snapshot.val().weatherTemperature;
+    weatherWindSpeed = snapshot.val().weatherWindSpeed;
+    weatherIcon = snapshot.val().weatherIcon;
+
+
 	console.log(emailToSend);
+    console.log(weatherForecastTime);
+    
 	sendEmail();
 })
 
