@@ -89,7 +89,7 @@ $("#submitButton").on("click", function() {
         minTemp = "Min Temperature: " + Math.floor(minTemp) + " Degrees Farenheit";
        
 
-        weatherIcon = response.list[0].weather[0].icon;
+        weatherIcon = response.list[12].weather[0].icon;
 
 
         $("#displayedWeather").append("<p> Time: " + response.list[12].dt_txt + "</p>")
@@ -110,7 +110,7 @@ $("#submitButton").on("click", function() {
         weatherHumidity = response.list[12].main.humidity;
         weatherTemperature = minTemp;
         weatherWindSpeed = response.list[12].wind.speed;
-        weatherIcon = 'http://openweathermap.org/img/w/' + weatherIcon + '.png';
+        
 
         console.log(weatherIcon);
 

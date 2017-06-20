@@ -24,6 +24,7 @@ var weatherIcon = "";
 
 database.ref().on("value", function(snapshot){
 	emailToSend = snapshot.val().email;
+
     weatherForecastTime = snapshot.val().weatherForecastTime;
     weatherDescription = snapshot.val().weatherDescription;
     weatherHumidity = snapshot.val().weatherHumidity;
@@ -33,9 +34,13 @@ database.ref().on("value", function(snapshot){
 
 
 	console.log(emailToSend);
-    console.log(weatherForecastTime);
-    
+    console.log(weatherIcon);
+
+//     for ( var i = 0; i<10; i++){
+
+// }
 	sendEmail();
+
 })
 
 
@@ -56,7 +61,16 @@ var mailOptions = {
     from: 'chillcast09@gmail.com',
     to: emailToSend,
     subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
+    text: 'That was easy!',
+    html: 
+    '<p> Forecast Date and Time: '+ weatherForecastTime + '</p>' + '<br>' +
+    '<p> Description: ' + weatherDescription + '</p>' + '<br>' +
+    '<p> Humidity: ' + weatherHumidity + '</p>' + '<br>' +
+    '<p> Temperature: ' + weatherTemperature + '<p>' + '<br>' +
+    '<p> Wind Speed: ' + weatherWindSpeed + '<p>' + '<br>'  +
+    "<img src ='" + weatherIcon +  "'style= 'width:100px'>"
+
+
 };
 
 transporter.sendMail(mailOptions, function(error, info) {
